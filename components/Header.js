@@ -14,7 +14,7 @@ function Header() {
 
                 <div className={styles.bannertext}>
                     <Link href='/calendar'><div className={styles.link}>Calendrier</div></Link>
-                    <Link href='/contact'><div className={styles.link}>Contact</div></Link>
+                    {/* <Link href='/contact'><div className={styles.link}>Contact</div></Link> */}
                     <Link href='https://www.instagram.com/polisemi.paris14/' target="_blank"><FontAwesomeIcon icon={faInstagram} className={styles.picto} size="2xl"/></Link>
                     <Link href='https://twitter.com/polisemi_75014?lang=fr' target="_blank"><FontAwesomeIcon icon={faXTwitter} className={styles.picto} size="2xl"/></Link>
             
@@ -25,4 +25,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header ; 

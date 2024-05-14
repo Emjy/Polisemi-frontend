@@ -1,3 +1,4 @@
+/* EVENEMENT VEDETTE - CARACTERISTIQUES GENERALES */
 .main {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   background-size: cover;
   color: white;
 }
+
 
 .text {
   margin-bottom: 8em;
@@ -44,6 +46,8 @@
   font-style: normal;
 }
 
+
+/* SELECTION D'EVENEMENTS */
 
 .events {
   display: flex;
