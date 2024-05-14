@@ -1,22 +1,71 @@
+/* EVENEMENT VEDETTE - CARACTERISTIQUES GENERALES */
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../public/fondation_cartier.jpg');
+  background-size: cover;
+  color: white;
+}
+
+
+.text {
+  margin-bottom: 8em;
+  margin-left: 10em;
+  padding: 2em;
+  border: 5px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 20em;
+  width: 50em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 25px;
+  padding-bottom: 1em;
 }
 
 .title {
-  line-height: 1.15;
-  font-size: 4rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+
+.info {
+  font-family: "Reddit Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+
+/* SELECTION D'EVENEMENTS */
+
+.events {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+  
+}
+
+.card {
+  margin-top: 4em;
+  margin-bottom: 2em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
