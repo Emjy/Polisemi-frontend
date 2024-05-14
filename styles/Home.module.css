@@ -29,7 +29,8 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: italic;
-  font-size: 25px
+  font-size: 25px;
+  padding-bottom: 1em;
 }
 
 .title {
@@ -52,8 +53,8 @@
 .events {
   display: flex;
   justify-content: space-around;
-  border: 5px solid green;
   width: 100vw;
+  height: 100vh;
   flex-wrap: wrap;
   
 }
