@@ -9,6 +9,7 @@ export default function eventsAdmin() {
     const router = useRouter();
 
     const [events, setEvents] = useState([])
+    const [addedEvent, setAddedEvent] = useState(false)
 
     // Fonction pour envoyer les données de l'événement au backend
     const addEvent = (newEvent) => {
@@ -24,6 +25,7 @@ export default function eventsAdmin() {
                 if (data.result) {
                     // L'événement a été ajouté avec succès, vous pouvez rediriger l'utilisateur ou effectuer d'autres actions
                     console.log('Event added successfully:', data.event);
+                    setAddedEvent(!addedEvent)
                 } else {
                     // Une erreur s'est produite lors de l'ajout de l'événement
                     console.error('Error adding event:', data.error);
@@ -49,10 +51,24 @@ export default function eventsAdmin() {
                     setEvents(sortedEvents);
                 }
             });
-    }, []);
+    }, [addedEvent]);
 
     const eventsData = events.map((event) => (
         <div key={event.id} style={{ display: 'flex', flexDirection: 'column', padding: '16px', margin: '16px', width: '500px', minHeight: '500px', backgroundColor: 'rgba(0,0,75, 0.08)', alignItems: 'center', borderRadius: '16px', justifyContent: 'space-between' }} >
+            <div style={{ display: 'flex' }}>
+                <div
+                    style={{ padding: '8px', backgroundColor: 'lightblue', borderRadius: '8px', margin: '8px', cursor: 'pointer' }}
+                    onClick={() => router.push(`/eventsModifAdmin?eventId=${event.id}`)}>
+                    Modifier
+                </div>
+                <div
+                    style={{ padding: '8px', backgroundColor: 'lightgreen', borderRadius: '8px', margin: '8px', cursor: 'pointer' }}
+                    onClick={() => { addEvent(event) }}
+                >
+                    Ajouter directement
+                </div>
+            </div>
+           
             <div>
                 {format(new Date(event.date_start), 'dd/MM/yyyy') + ' - ' + format(new Date(event.date_end), 'dd/MM/yyyy')}
             </div>
@@ -89,27 +105,24 @@ export default function eventsAdmin() {
                 {'Date de publication : ' + format(new Date(event.updated_at), 'dd/MM/yyyy')}
             </div>
 
-            <div style={{ display: 'flex' }}>
-                <div
-                    style={{ padding: '8px', backgroundColor: 'lightblue', borderRadius: '8px', margin: '8px' }}
-                    onClick={() => router.push(`/eventsModifAdmin?eventId=${event.id}`)}>
-                    Modifier
-                </div>
-                <div
-                    style={{ padding: '8px', backgroundColor: 'lightblue', borderRadius: '8px', margin: '8px' }}
-                    onClick={() => { addEvent(event) }}
-                >
-                    Ajouter
-                </div>
-            </div>
+           
         </div>
 
     ))
 
     return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center' }}>
-            {eventsData.length > 0 ? eventsData : <p>Loading...</p>}
-        </div>
+
+        <>
+            <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                <h1>
+                    Ajout des articles
+                </h1> 
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center', overflow:'auto' }}>
+                {eventsData.length > 0 ? eventsData : <p>Loading...</p>}
+            </div>
+        </>
+        
     );
 
 

@@ -8,6 +8,8 @@ import { format } from 'date-fns';
 function Home() {
 
   const [events, setEvents] = useState([])
+  const [deletedEvent, setDeletedEvent] = useState(false)
+
 
   // Récupération des events
   useEffect(() => {
@@ -24,7 +26,32 @@ function Home() {
           setEvents(sortedEvents);
         }
       });
-  }, []);
+  }, [deletedEvent]);
+
+  // Suppression d'un article selon son ID
+  const deleteEvent = (eventId) => {
+
+    fetch(`http://localhost:3000/events/deleteEvent/${eventId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Event deleted successfully:', data);
+        setDeletedEvent(!deletedEvent)
+      })
+      .catch(error => {
+        console.error('Error deleting event:', error);
+      });
+
+  }
 
 
   const eventsData = events.map((event) => (
@@ -63,6 +90,15 @@ function Home() {
 
       <div style={{ fontSize: '10px' }}>
         {'Date de publication : ' + format(new Date(event.updated_at), 'dd/MM/yyyy')}
+      </div>
+
+      <div style={{ display: 'flex' }}>
+        <div
+          style={{ padding: '8px', backgroundColor: 'lightblue', borderRadius: '8px', margin: '8px', cursor: 'pointer' }}
+          onClick={() => deleteEvent(event.id)}>
+          Supprimer
+        </div>
+
       </div>
     </div>
 
