@@ -28,6 +28,6 @@ export default function eventsModifAdmin(props) {
 
 
     return (
-        <div>{event.title}</div>
+        <div></div>
     )
 }
